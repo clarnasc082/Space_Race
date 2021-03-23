@@ -272,7 +272,7 @@ namespace Space_Race
                 subTitleLabel.Text += "\nPress Space Bar to Start or Escape to Exit";
             }
             else if (gameState == "winner")
-            {
+            { 
                 titleLabel.Text = "WINNER";
                 subTitleLabel.Text += "\nPress Space Bar to Start or Escape to Exit";
             }
