@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Space_Race
 {
@@ -128,8 +129,10 @@ namespace Space_Race
                 Rectangle astroidRec = new Rectangle(astroidXList[i], astroidYList[i], astroidWidth, astroidHeight);
 
                 if (paddle1Rec.IntersectsWith(astroidRec))
-                {
+                { 
                     paddle1Y = 330;
+                    SoundPlayer Player = new SoundPlayer(Properties.Resources._253886__themusicalnomad__negative_beeps);
+                    Player.Play();
                 }
             }
 
@@ -140,6 +143,8 @@ namespace Space_Race
                 if (paddle2Rec.IntersectsWith(astroidRec))
                 {
                     paddle2Y = 330;
+                    SoundPlayer Player = new SoundPlayer(Properties.Resources._253886__themusicalnomad__negative_beeps);
+                    Player.Play();
                 }
             }
 
@@ -149,6 +154,9 @@ namespace Space_Race
                 player1Score = player1Score + 1;
                 rocket1ScoreLabel.Text = $"{player1Score}";
                 paddle1Y = 330;
+                SoundPlayer Player = new SoundPlayer(Properties.Resources._488227__plumaudio__happy_blip__1_);
+                Player.Play();
+
             }
 
             if (paddle2Y < 0)
@@ -156,6 +164,8 @@ namespace Space_Race
                 player2Score = player2Score + 1;
                 rocket2ScoreLabel.Text = $"{player2Score}";
                 paddle2Y = 330;
+                SoundPlayer Player = new SoundPlayer(Properties.Resources._488227__plumaudio__happy_blip__1_);
+                Player.Play();
             }
 
             //if player reaches a score of 3
