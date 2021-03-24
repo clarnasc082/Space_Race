@@ -42,32 +42,18 @@ namespace Space_Race
         int paddleHeight = 50;
         int paddleSpeed = 4;
 
-        int timerLineX = 300;
-        int timerLineY = 70;
-        int timerLineWidth = 5;
-        int timerLineHeight = 300;
-
-        int time = 600;
-
         //astroids
         List<int> astroidXList = new List<int>();
         List<int> astroidYList = new List<int>();
+
+        List<int> astroid1XList = new List<int>();
+        List<int> astroid1YList = new List<int>(); 
+
         List<int> astroidSpeedList = new List<int>();
         List<string> astroidColourList = new List<string>();
 
-        //List<int> astroidRightXList = new List<int>();
-        //List<int> astroidRightYList = new List<int>();
-        int counter = 0;
-        int astroidLeftX = 100;
-        int astroidLeftY = 350;
-
-        int astroidRightX = 400;
-        int astroidRightY = 10;
-
         int astroidWidth = 3;
         int astroidHeight = 2;
-        int astroidSpeed = 4;
-
 
         public Form1()
         {
@@ -83,16 +69,11 @@ namespace Space_Race
 
             astroidXList.Clear();
             astroidYList.Clear();
+
+            astroid1XList.Clear(); 
+            astroid1YList.Clear();
+
             astroidSpeedList.Clear();
-            time = 600;
-
-            //astroidYList.Add(300);
-
-            //paddle2X = 440;
-            //paddle2Y = 330;
-
-            //ballX = this.Width / 2 - ballWidth / 2;
-            // ballY = this.Height - ballHeight - ballHeight;
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -105,6 +86,11 @@ namespace Space_Race
                 astroidYList.Add(randGen.Next(0, this.Height - 50));
                 astroidXList.Add(10);
                 astroidSpeedList.Add(randGen.Next(2, 10));
+
+                astroidYList.Add(randGen.Next(0, this.Height - 50)); 
+                astroidXList.Add(660);
+
+                astroidSpeedList.Add(randGen.Next(-10, -2));
                 astroidColourList.Add("white");
             }
 
@@ -112,7 +98,6 @@ namespace Space_Race
             {
                 astroidXList[i] += astroidSpeedList[i];
             }
-
 
             if (upArrowDown == true && paddle1Y > 0)
             {
@@ -134,18 +119,10 @@ namespace Space_Race
                 paddle2Y += paddleSpeed;
             }
 
-
-
-            //TO DO:
-            //add sounds
-            //dots coming from the right
-            //state who winner is
-
-
             //if rocket and metiorite hit
             Rectangle paddle1Rec = new Rectangle(paddle1X, paddle1Y, paddleWidth, paddleHeight);
             Rectangle paddle2Rec = new Rectangle(paddle2X, paddle2Y, paddleWidth, paddleHeight);
-
+             
             for (int i = 0; i < astroidYList.Count; i++)
             {
                 Rectangle astroidRec = new Rectangle(astroidXList[i], astroidYList[i], astroidWidth, astroidHeight);
@@ -185,11 +162,13 @@ namespace Space_Race
             if (player1Score == 3) 
             {
                 gameState = "winner";
+                winnrLabel.Text = "Player 1 Congratulations";
             }
 
             if (player2Score == 3)
             {
                 gameState = "winner";
+                winnrLabel.Text = "Player 2 Congratulations";
             }
             Refresh();
         }
@@ -211,13 +190,13 @@ namespace Space_Race
                     downArrowDown = true;
                     break;
                 case Keys.Space:
-                    if (gameState == "waiting" || gameState == "over")
+                    if (gameState == "waiting" || gameState == "winner")
                     {
                         GameInitialize();
                     }
                     break;
                 case Keys.Escape:
-                    if (gameState == "waiting" || gameState == "over")
+                    if (gameState == "waiting" || gameState == "winner")
                     {
                         Application.Exit();
                     }
@@ -255,36 +234,31 @@ namespace Space_Race
                 // draw text at top 
                 titleLabel.Text = $" ";
                 subTitleLabel.Text = $" ";
+                winnrLabel.Text = " ";
 
                 e.Graphics.DrawRectangle(drawPen, paddle1X, paddle1Y, paddleWidth, paddleHeight);
                 e.Graphics.DrawRectangle(drawPen, paddle2X, paddle2Y, paddleWidth, paddleHeight);
-
 
                 for (int i = 0; i < astroidYList.Count(); i++)
                 {
                     e.Graphics.FillRectangle(whiteBrush, astroidXList[i], astroidYList[i], astroidWidth, astroidHeight);
                 }
-
             }
             else if (gameState == "over")
             {
                 titleLabel.Text = "GAME OVER";
                 subTitleLabel.Text += "\nPress Space Bar to Start or Escape to Exit";
+                rocket1ScoreLabel.Text = " ";
+                rocket2ScoreLabel.Text = " ";
             }
             else if (gameState == "winner")
             { 
                 titleLabel.Text = "WINNER";
                 subTitleLabel.Text += "\nPress Space Bar to Start or Escape to Exit";
+                rocket1ScoreLabel.Text = " ";
+                rocket2ScoreLabel.Text = " ";
             }
         }
-
-        ////rockets
-        //e.Graphics.DrawRectangle(drawPen, paddle1X, paddle1Y, paddleWidth, paddleHeight);
-        //e.Graphics.DrawRectangle(drawPen, paddle2X, paddle2Y, paddleWidth, paddleHeight);
-
-        //    timer line
-        //    e.Graphics.DrawRectangle(drawPen, timerLineX, timerLineY, timerLineWidth, timerLineHeight);
-        //    e.Graphics.FillRectangle(whiteBrush, timerLineX, timerLineY, timerLineWidth, timerLineHeight);
     }
 }
 

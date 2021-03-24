@@ -35,6 +35,7 @@ namespace Space_Race
             this.rocket2ScoreLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.subTitleLabel = new System.Windows.Forms.Label();
+            this.winnrLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -79,11 +80,21 @@ namespace Space_Race
             this.subTitleLabel.BackColor = System.Drawing.Color.Transparent;
             this.subTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subTitleLabel.ForeColor = System.Drawing.Color.Green;
-            this.subTitleLabel.Location = new System.Drawing.Point(211, 146);
+            this.subTitleLabel.Location = new System.Drawing.Point(211, 203);
             this.subTitleLabel.Name = "subTitleLabel";
             this.subTitleLabel.Size = new System.Drawing.Size(291, 39);
             this.subTitleLabel.TabIndex = 7;
             this.subTitleLabel.Text = "Space to start, escape to exit";
+            // 
+            // winnrLabel
+            // 
+            this.winnrLabel.BackColor = System.Drawing.Color.Transparent;
+            this.winnrLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winnrLabel.ForeColor = System.Drawing.Color.Green;
+            this.winnrLabel.Location = new System.Drawing.Point(211, 148);
+            this.winnrLabel.Name = "winnrLabel";
+            this.winnrLabel.Size = new System.Drawing.Size(291, 39);
+            this.winnrLabel.TabIndex = 8;
             // 
             // Form1
             // 
@@ -91,6 +102,7 @@ namespace Space_Race
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(674, 398);
+            this.Controls.Add(this.winnrLabel);
             this.Controls.Add(this.subTitleLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.rocket2ScoreLabel);
@@ -113,6 +125,7 @@ namespace Space_Race
         private System.Windows.Forms.Label rocket2ScoreLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label subTitleLabel;
+        private System.Windows.Forms.Label winnrLabel;
     }
 }
 
