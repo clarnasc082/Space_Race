@@ -173,12 +173,14 @@ namespace Space_Race
             {
                 gameState = "winner";
                 winnrLabel.Text = "Player 1 Congratulations";
+                player1Score = 0;
             }
 
             if (player2Score == 3)
             {
                 gameState = "winner";
                 winnrLabel.Text = "Player 2 Congratulations";
+                player2Score = 0;
             }
             Refresh();
         }
